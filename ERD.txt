@@ -1,0 +1,33 @@
+Entities:
+User:
+
+Represents the users of the app.
+Attributes: id, username, email, password.
+Profile (if extended from User):
+
+Represents additional user information.
+Attributes: id, user_id (FK to User), name, image.
+Task:
+
+Represents a task to be completed by a user.
+Attributes: id, title, description, due_date, priority_level, category_id (FK to Category), state_id (FK to State), created_at, updated_at.
+Category:
+
+Represents a group or type of tasks.
+Attributes: id, name, description.
+Priority:
+
+Represents the urgency of a task.
+Attributes: id, level (e.g., High, Medium, Low).
+State:
+
+Represents the current status of a task.
+Attributes: id, name (e.g., Open, In Progress, Done).
+TaskAssignment:
+
+Represents the assignment of tasks to users.
+Attributes: id, task_id (FK to Task), user_id (FK to User).
+TaskAttachment:
+
+Represents files attached to tasks.
+Attributes: id, task_id (FK to Task), file_path, uploaded_at.
