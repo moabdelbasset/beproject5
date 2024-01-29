@@ -84,7 +84,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'beproject5-5d5ddb867f18.herokuapp.com]
+ALLOWED_HOSTS = ['localhost', 'beproject5-5d5ddb867f18.herokuapp.com']
 
 
 
