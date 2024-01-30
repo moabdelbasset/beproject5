@@ -138,6 +138,10 @@ else:
         r"^https://.*\.gitpod\.io$",
         r"^https://.*\.app.github\.dev$",
     ]
+    CORS_ALLOWED_ORIGINS = [
+        "https://psychic-space-system-q4xr96vx5v7h9ggv-3000.app.github.dev",
+        "https://feproject5-c5d5d2304ed4.herokuapp.com"
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
