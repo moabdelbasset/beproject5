@@ -17,7 +17,8 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         # Assuming you want to automatically set the 'assigned_to' field to the user who created the task
-        task = Task.objects.create(**validated_data, assigned_to=self.context['request'].user.profile)
+        assigned_to = validated_data.pop('assigned_to', None)
+        task = Task.objects.create(**validated_data, assigned_to=assigned_to or self.context['request'].user.profile)
         return task
 
 
