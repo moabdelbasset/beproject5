@@ -10,6 +10,7 @@ class TaskSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         return request.user == obj.assigned_to.user if request else False
 
+
     def create(self, validated_data):
         return Task.objects.create(**validated_data, assigned_to=self.context['request'].user.profile)
 

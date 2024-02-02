@@ -20,4 +20,4 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
 
     def get_serializer_context(self):
-        return Task.objects.filter(id=self.kwargs.get('pk'))
+        return {'request': self.request}
