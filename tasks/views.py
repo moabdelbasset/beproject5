@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions
 from .models import Task
 from .serializers import TaskSerializer
+from beproject5.permissions import IsOwnerOrReadOnly
 
 
 class TaskList(generics.ListCreateAPIView):
