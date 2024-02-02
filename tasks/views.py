@@ -20,4 +20,5 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
 
     def get_serializer_context(self):
-        return {'request': self.request}
+        context = super().get_serializer_context()
+        return context

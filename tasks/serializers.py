@@ -17,9 +17,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         request = self.context.get('request')
-        if request and hasattr(obj.assigned_to, 'user'):
-            return request.user == obj.assigned_to.user
-        return False
+        return obj.assigned_to == request.user.profile if request else False
 
 
     def create(self, validated_data):
