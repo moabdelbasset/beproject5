@@ -1,9 +1,11 @@
 from rest_framework import serializers
+from rest_framework.fields import SerializerMethodField
 from .models import Task
 
 class TaskSerializer(serializers.ModelSerializer):
     # You might want to include the owner's username to display who created the task
     owner_username = serializers.ReadOnlyField(source='assigned_to.user.username')
+    is_owner = SerializerMethodField()
 
     class Meta:
         model = Task
@@ -17,9 +19,8 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         request = self.context['request']
-        if request and hasattr(request, "user"):
-            return obj.assigned_to.user == request.user
-        return False
+        return obj.assigned_to.user == request.user if request else False
+
         #return request.user == obj.owner    
 
     def create(self, validated_data):
