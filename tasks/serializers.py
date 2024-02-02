@@ -4,12 +4,13 @@ from .models import Task
 class TaskSerializer(serializers.ModelSerializer):
     # You might want to include the owner's username to display who created the task
     owner_username = serializers.ReadOnlyField(source='assigned_to.user.username')
+    is_owner = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
         fields = [
             'id', 'title', 'description', 'status', 'priority', 'due_date', 
-            'created_at', 'updated_at', 'assigned_to', 'owner_username'
+            'created_at', 'updated_at', 'assigned_to', 'owner_username', 'is_owner'
         ]
         extra_kwargs = {
             'assigned_to': {'read_only': True}
