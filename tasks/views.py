@@ -14,8 +14,9 @@ class TaskList(generics.ListCreateAPIView):
     def get_queryset(self):
         # This view should return a list of all tasks
         # for the currently authenticated user.
-        user_profile = self.request.user.profile
-        return Task.objects.filter(assigned_to=user_profile)
+        # user_profile = self.request.user.profile
+        # return Task.objects.filter(assigned_to=user_profile)
+        return Task.objects.all()
 
     def perform_create(self, serializer):
         # Assign the task to the current user's profile.
