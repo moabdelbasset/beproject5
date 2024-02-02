@@ -4,7 +4,6 @@ from .models import Task
 class TaskSerializer(serializers.ModelSerializer):
     # You might want to include the owner's username to display who created the task
     owner_username = serializers.ReadOnlyField(source='assigned_to.user.username')
-    is_owner = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
