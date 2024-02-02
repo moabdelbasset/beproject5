@@ -23,6 +23,7 @@ class TaskList(generics.ListCreateAPIView):
         serializer.save(assigned_to=self.request.user.profile)
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwner]
 
