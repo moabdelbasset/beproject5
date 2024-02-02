@@ -2,14 +2,11 @@ from rest_framework import generics, permissions
 from .models import Task
 from .serializers import TaskSerializer
 
-class IsOwner(permissions.BasePermission):
-    """Custom permission class to allow only task owners to edit/delete."""
-    def has_object_permission(self, request, view, obj):
-        return obj.assigned_to.user == request.user
 
 class TaskList(generics.ListCreateAPIView):
+    """List or create tasks if logged in"""
     serializer_class = TaskSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         # This view should return a list of all tasks
@@ -20,15 +17,15 @@ class TaskList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         # Assign the task to the current user's profile.
-        serializer.save(assigned_to=self.request.user.profile)
+        serializer.save(assigned_to=self.request.user)
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [permissions.IsAuthenticated, IsOwner]
+    permission_classes = [IsOwnerOrReadOnly]
 
-    def get_queryset(self):
-        # This view should return a task
-        # for the currently authenticated user.
-        user = self.request.user
-        return Task.objects.filter(assigned_to__user=user)
+    # def get_queryset(self):
+    #     # This view should return a task
+    #     # for the currently authenticated user.
+    #     user = self.request.user
+    #     return Task.objects.filter(assigned_to__user=user)
