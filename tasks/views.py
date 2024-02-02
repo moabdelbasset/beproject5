@@ -18,8 +18,8 @@ class TaskList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         # Assign the task to the current user's profile.
-        # serializer.save(assigned_to=self.request.user)
-        serializer.save(assigned_to=self.request.user.profile, context={'request': self.request})
+        serializer.save(assigned_to=self.request.user)
+        # serializer.save(assigned_to=self.request.user.profile, context={'request': self.request})
 
 
     def get_serializer_context(self):
@@ -32,9 +32,9 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TaskSerializer
     permission_classes = [IsOwnerOrReadOnly]
     
-    def get_serializer_context(self):
-        """Extra context provided to the serializer class."""
-        return {'request': self.request}
+    # def get_serializer_context(self):
+    #     """Extra context provided to the serializer class."""
+    #     return {'request': self.request}
 
     # def get_queryset(self):
     #     # This view should return a task
