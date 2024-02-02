@@ -1,11 +1,9 @@
 from rest_framework import serializers
-from rest_framework.fields import SerializerMethodField
 from .models import Task
 
 class TaskSerializer(serializers.ModelSerializer):
     # You might want to include the owner's username to display who created the task
     owner_username = serializers.ReadOnlyField(source='assigned_to.user.username')
-    
 
     class Meta:
         model = Task
