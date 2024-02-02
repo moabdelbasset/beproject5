@@ -17,7 +17,10 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_is_owner(self, obj):
         request = self.context['request']
-        return request.user == obj.owner    
+        if request and hasattr(request, "user"):
+            return obj.assigned_to.user == request.user
+        return False
+        #return request.user == obj.owner    
 
     def create(self, validated_data):
         # Assuming you want to automatically set the 'assigned_to' field to the user who created the task
