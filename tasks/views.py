@@ -22,9 +22,9 @@ class TaskList(generics.ListCreateAPIView):
         # serializer.save(assigned_to=self.request.user.profile, context={'request': self.request})
 
 
-    def get_serializer_context(self):
-        """Extra context provided to the serializer class."""
-        return {'request': self.request}
+    # def get_serializer_context(self):
+    #     """Extra context provided to the serializer class."""
+    #     return {'request': self.request}
 
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
