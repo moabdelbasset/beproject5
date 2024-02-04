@@ -2,6 +2,8 @@ from rest_framework import generics, permissions
 from .models import Task
 from .serializers import TaskSerializer
 from beproject5.permissions import IsOwnerOrReadOnly
+from django.http import Http404
+
 
 
 class TaskList(generics.ListCreateAPIView):
@@ -11,8 +13,10 @@ class TaskList(generics.ListCreateAPIView):
     queryset = Task.objects.all()
 
     def get_queryset(self):
-        user = self.request.user
-        return Task.objects.filter(assigned_to=user.profile)
+        if self.request.user.is_authenticated:
+            return Task.objects.filter(assigned_to=self.request.user.profile)
+        else:
+            raise Http404
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
