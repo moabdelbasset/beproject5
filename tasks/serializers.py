@@ -21,5 +21,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
     def create(self, validated_data):
-        return Task.objects.create(**validated_data, assigned_to=self.context['request'].user.profile)
+        task = Task.objects.create(**validated_data)
+        return task
+        #return Task.objects.create(**validated_data, assigned_to=self.context['request'].user.profile)
 
