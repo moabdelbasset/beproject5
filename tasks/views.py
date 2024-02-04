@@ -19,7 +19,9 @@ class TaskList(generics.ListCreateAPIView):
             raise Http404
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        user_profile = self.request.user.profile
+        serializer.save(assigned_to=user_profile)
+        #serializer.save(owner=self.request.user)
 
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
