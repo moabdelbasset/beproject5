@@ -10,6 +10,10 @@ class TaskList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Task.objects.all()
 
+    def get_queryset(self):
+        user = self.request.user
+        return Task.objects.filter(assigned_to=user.profile)
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
