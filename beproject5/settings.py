@@ -21,6 +21,8 @@ config = AutoConfig(search_path='.env')
 if os.path.exists("env.py"):
     import env
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 if 'DEV' in os.environ:
     DATABASES = {
@@ -45,8 +47,7 @@ CLOUDINARY_STORAGE = {
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
@@ -113,6 +114,7 @@ INSTALLED_APPS = [
     #Apps
     'profiles',
     'tasks',
+    'contacts',
 ]
 
 SITE_ID = 1
