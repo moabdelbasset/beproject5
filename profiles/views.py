@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
 from beproject5.permissions import IsOwnerOrReadOnly
+from beproject5.permissions import IsTaskOwnerOrReadOnly
 
 class ProfileList(APIView):
     """
@@ -19,7 +20,7 @@ class ProfileList(APIView):
 
 class ProfileDetail(APIView):
     serializer_class = ProfileSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsTaskOwnerOrReadOnly]
 
     def get_object(self, pk):
         try:
