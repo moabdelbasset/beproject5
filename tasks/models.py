@@ -1,7 +1,9 @@
 from django.db import models
-from profiles.models import Profile  
+from profiles.models import Profile
+
 
 class Task(models.Model):
+    """Represents a task model"""
     # Choices for status
     STATUS_CHOICES = [
         ('pending', 'Pending'),
@@ -20,16 +22,20 @@ class Task(models.Model):
     # Fields
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='pending')
-    priority = models.CharField(max_length=50, choices=PRIORITY_CHOICES, default='medium')
+    status = models.CharField(max_length=50,
+                              choices=STATUS_CHOICES, default='pending')
+    priority = models.CharField(max_length=50,
+                                choices=PRIORITY_CHOICES, default='medium')
     due_date = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    assigned_to = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, related_name='tasks')
+    assigned_to = models.ForeignKey(Profile, on_delete=models.SET_NULL,
+                                    null=True, related_name='tasks')
 
     class Meta:
         ordering = ['-created_at']
 
     def __str__(self):
+        """Return a string representation of the Task, including its ID and
+          title"""
         return f'{self.id} {self.title}'
-
