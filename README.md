@@ -216,7 +216,7 @@ Each python file in this repo has been run through and each file received the sa
  All functions have been manually tested to make sure each function works as intended and only for users as intended. Testing of the entire full stack application can be found within [FRONT-END REPO](https://github.com/moabdelbasset/feproject5)
 
 ##### Negative Testing
- All functions have been tested to make sure no functions are availabale to unauthorised users etc. This was done throughout the entire development process. Full application testing can be found on [FRONT-END REPO](https://github.com/moabdelbasset/feproject5)
+ All functions have been tested to make sure no functions are available to unauthorised users etc. This was done throughout the entire development process. Full application testing can be found on [FRONT-END REPO](https://github.com/moabdelbasset/feproject5)
 
 ### Automatic Testing
 
@@ -299,6 +299,7 @@ When you have fork to a repository you don't have access to files locally on you
 ## Credits
 
 - Code Insitute's DRF walkthrough
+- My mentor [Daisy Mc Girr](https://github.com/Daisy-McG) for helping me during the project. Her insights were really helpfull along all the projects and I learned from her alot.
 - All the links below to help me with creating average rating for list and detail views:
     - [When()](https://docs.djangoproject.com/en/4.2/ref/models/conditional-expressions/)
     - [F()](https://docs.djangoproject.com/en/5.0/ref/models/expressions/)
