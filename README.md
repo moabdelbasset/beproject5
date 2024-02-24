@@ -304,3 +304,4 @@ When you have fork to a repository you don't have access to files locally on you
     - [F()](https://docs.djangoproject.com/en/5.0/ref/models/expressions/)
     - [Stack overflow](https://stackoverflow.com/questions/68953258/%20how-to-calculate-average-of-some-field-in-django-models-and-send-it-to-rest-api) 
     - [django fun](https://django.fun/qa/16172/)
+    - [Asia Wi] 
