@@ -83,7 +83,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'beproject5-5d5ddb867f18.herokuapp.com']
 
